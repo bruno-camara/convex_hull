@@ -7,7 +7,7 @@
 
 from itertools import permutations
 
-from utils import is_convex, scatter_plot, point_in_poly
+from utils import is_convex, scatter_plot, point_in_polygon
 
 
 def naive(points, show_progress=False):
@@ -21,7 +21,7 @@ def naive(points, show_progress=False):
                 j = 0
                 while not one_out and j < len(points):
                     point = points[j]
-                    if point not in list(subset) and not point_in_poly(point, list(subset)):
+                    if point not in list(subset) and not point_in_polygon(point, list(subset)):
                         one_out = True
                     j = j + 1
                 if not one_out:
