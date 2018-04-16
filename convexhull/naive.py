@@ -11,19 +11,20 @@ from utils import is_convex, scatter_plot, point_in_poly
 
 
 def naive(points, show_progress=False):
-    i = 3;
+    i = 3
     while i <= len(points):
-        for set in permutations(points, i):
-            if is_convex(set):
-                if show_progress: scatter_plot(points, [set])
+        for subset in permutations(points, i):
+            if is_convex(subset):
+                if show_progress:
+                    scatter_plot(points, [subset])
                 one_out = False
-                j = 0;
+                j = 0
                 while not one_out and j < len(points):
                     point = points[j]
-                    if not point in list(set) and not point_in_poly(point, list(set)):
+                    if point not in list(subset) and not point_in_poly(point, list(subset)):
                         one_out = True
                     j = j + 1
                 if not one_out:
-                    return set
+                    return subset
         i = i + 1
     return []

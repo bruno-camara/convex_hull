@@ -1,9 +1,7 @@
-from random import seed  # for sorting and creating data pts
-from itertools import permutations
-from matplotlib import pyplot as plt  # for plotting
-from random import randint  # for sorting and creating data pts
 from math import atan2  # for computing polar angle
-from time import time  # for getting clock time
+from random import randint  # for sorting and creating data pts
+
+from matplotlib import pyplot as plt  # for plotting
 
 
 # Returns a list of (x,y) coordinates of length 'num_points',
@@ -27,7 +25,8 @@ def scatter_plot(coords, convex_hulls=None):
             # plot the convex hull boundary, extra iteration at
             # the end so that the bounding line wraps around
             for i in range(1, len(convex_hull) + 1):
-                if i == len(convex_hull): i = 0  # wrap
+                if i == len(convex_hull):
+                    i = 0  # wrap
                 c0 = convex_hull[i - 1]
                 c1 = convex_hull[i]
                 plt.plot((c0[0], c1[0]), (c0[1], c1[1]), 'r')
@@ -40,6 +39,7 @@ def point_in_poly(point, poly):
     y = point[1]
     n = len(poly)
     inside = False
+    xints = 0.0
     p1x, p1y = poly[0]
     for i in range(n + 1):
         p2x, p2y = poly[i % n]
@@ -77,9 +77,9 @@ def distance(p0, p1):
 
 
 # Returns the determinant of the 3x3 matrix...
-# 	[p1(x) p1(y) 1]
-#	[p2(x) p2(y) 1]
-# 	[p3(x) p3(y) 1]
+#  [p1(x) p1(y) 1]
+#  [p2(x) p2(y) 1]
+#  [p3(x) p3(y) 1]
 # If >0 then counter-clockwise
 # If <0 then clockwise
 # If =0 then collinear
@@ -90,9 +90,10 @@ def det(p1, p2, p3):
 
 # Determines whether a set of points constitutes a convex polygon.
 def is_convex(points):
-    i = 0;
+    i = 0
     while det(points[i % len(points)], points[(i + 1) % len(points)], points[(i + 2) % len(points)]) <= 0 and i < len(
-            points): i = i + 1
+            points):
+        i = i + 1
     return i == len(points)
 
 
@@ -101,7 +102,8 @@ def is_convex(points):
 # For any values with equal polar angles, a second sort is applied to
 # ensure increasing distance from the 'anchor' point.
 def quicksort(a, anchor):
-    if len(a) <= 1: return a
+    if len(a) <= 1:
+        return a
     smaller, equal, larger = [], [], []
     piv_ang = polar_angle(a[randint(0, len(a) - 1)], anchor)  # select random pivot
     for pt in a:

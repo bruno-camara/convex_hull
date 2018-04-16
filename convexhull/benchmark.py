@@ -1,3 +1,6 @@
+from random import seed
+from time import time
+
 from graham import graham
 from jarvis import jarvis
 from naive import naive
@@ -9,7 +12,7 @@ from utils import *
 # time to find the Convex Hull for a dataset of that size,
 # the range used for max and min for the create_points function
 # is always 10 times the highest value in the 'sizes' list.
-def benchmark(sizes=[1, 10, 100, 1000, 10000], method=graham):
+def benchmark(sizes=(1, 10, 100, 1000, 10000), method=graham):
     print(method)
     for s in sizes:
         tot = 0.0
