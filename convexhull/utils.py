@@ -34,6 +34,7 @@ def scatter_plot(coords, convex_hulls=None):
     plt.show()
 
 
+# Determines whether a (x,y) point in inside a polygon defined as a list of (x,y) points.
 def point_in_poly(point, poly):
     x = point[0]
     y = point[1]
