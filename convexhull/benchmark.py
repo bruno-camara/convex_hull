@@ -29,5 +29,3 @@ algorithms = [naive, graham, jarvis, shamos]
 
 for algorithm in algorithms:
     benchmark([2, 4, 6, 8, 10], method=algorithm)
-
-
