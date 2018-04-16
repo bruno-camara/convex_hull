@@ -24,8 +24,13 @@ def benchmark(sizes=(1, 10, 100, 1000, 10000), method=graham):
         print("size %d time: %0.5f" % (s, tot / 3.0))
 
 
-seed(0)
-algorithms = [naive, graham, jarvis, shamos]
+def main():
+    seed(0)
+    algorithms = [naive]  # , graham, jarvis, shamos]
 
-for algorithm in algorithms:
-    benchmark([2, 4, 6, 8, 10], method=algorithm)
+    for algorithm in algorithms:
+        benchmark([2, 4, 6, 8, 10], method=algorithm)
+
+
+if __name__ == "__main__":
+    main()
