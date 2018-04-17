@@ -1,12 +1,18 @@
-from naive import naive
+from random import seed
+
+from graham import graham
+from jarvis import jarvis
+from naive import exhaustive
+from shamos import shamos
 from utils import create_points, scatter_plot
 
 
 def main():
-    pts = create_points(5)
+    seed(0)
+    pts = create_points(100)
     scatter_plot(pts, [[]])
     print("Points:", pts)
-    hull = naive(pts, True)
+    hull = exhaustive(pts, True)
     print("Hull:", hull)
     scatter_plot(pts, [hull])
 

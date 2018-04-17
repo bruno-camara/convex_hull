@@ -1,14 +1,21 @@
 from math import atan2  # for computing polar angle
-from random import randint  # for sorting and creating data pts
+from random import randint, sample  # for sorting and creating data pts
 
 from matplotlib import pyplot as plt  # for plotting
 
 
-# Returns a list of (x,y) coordinates of length 'num_points',
+# Returns a list of unique (x,y) coordinates of length 'num_points',
 # each x and y coordinate is chosen randomly from the range
 # 'min' up to 'max'.
 def create_points(ct, minimum=0, maximum=50):
-    return [[randint(minimum, maximum), randint(minimum, maximum)] for _ in range(ct)]
+    delta = maximum - minimum
+    if delta * delta < ct:
+        raise ValueError("Number of points too large for the available space")
+    ps = sample(range(0, delta * delta), ct)
+    points = []
+    for p in ps:
+        points.append([(p % delta) + minimum, (p // delta) + minimum])
+    return points
 
 
 # Creates a scatter plot, input is a list of (x,y) coordinates.

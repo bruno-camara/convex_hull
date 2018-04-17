@@ -10,7 +10,7 @@ from itertools import permutations
 from utils import is_convex, scatter_plot, point_in_polygon
 
 
-def naive(points, show_progress=False):
+def exhaustive(points, show_progress=False):
     i = 3
     while i <= len(points):
         for subset in permutations(points, i):
