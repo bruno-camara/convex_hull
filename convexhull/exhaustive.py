@@ -27,4 +27,4 @@ def exhaustive(points, show_progress=False):
                 if not one_out:
                     return subset
         i = i + 1
-    return []
+    return points

@@ -12,7 +12,7 @@ def main():
     pts = create_points(100)
     scatter_plot(pts, [[]])
     print("Points:", pts)
-    hull = exhaustive(pts, True)
+    hull = shamos(pts, True)
     print("Hull:", hull)
     scatter_plot(pts, [hull])
 

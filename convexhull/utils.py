@@ -90,7 +90,7 @@ def distance(p0, p1):
 # If >0 then counter-clockwise
 # If <0 then clockwise
 # If =0 then collinear
-def det(p1, p2, p3):
+def determinant(p1, p2, p3):
     return (p2[0] - p1[0]) * (p3[1] - p1[1]) \
            - (p2[1] - p1[1]) * (p3[0] - p1[0])
 
@@ -98,7 +98,8 @@ def det(p1, p2, p3):
 # Determines whether a set of points constitutes a convex polygon.
 def is_convex(points):
     i = 0
-    while det(points[i % len(points)], points[(i + 1) % len(points)], points[(i + 2) % len(points)]) <= 0 and i < len(
+    while determinant(points[i % len(points)], points[(i + 1) % len(points)],
+                      points[(i + 2) % len(points)]) <= 0 and i < len(
             points):
         i = i + 1
     return i == len(points)
