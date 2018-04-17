@@ -4,7 +4,7 @@ from time import time
 from graham import graham
 from jarvis import jarvis
 from shamos import shamos
-from naive import exhaustive
+from exhaustive import exhaustive
 from utils import *
 
 
