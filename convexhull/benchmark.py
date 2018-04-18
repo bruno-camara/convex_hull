@@ -1,6 +1,5 @@
 from random import seed
 from time import time
-from timeit import timeit
 
 from graham import graham
 from jarvis import jarvis
@@ -19,9 +18,9 @@ def benchmark(sizes=(10, 100, 1000, 10000, 100000), method=exhaustive):
         tot = 0.0
         for _ in range(3):
             points = create_points(s, 0, max(sizes) * 10)
-            t0 = time()
+            t0 = time.time()
             method(points, False)
-            tot += (time() - t0)
+            tot += (time.time() - t0)
         print("size %d time: %0.5f" % (s, tot / 3.0))
 
 

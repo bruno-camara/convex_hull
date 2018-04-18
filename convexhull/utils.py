@@ -1,3 +1,5 @@
+import sys
+import time
 from math import atan2  # for computing polar angle
 from random import randint, sample  # for sorting and creating data pts
 
@@ -23,7 +25,15 @@ def create_points(ct, minimum=0, maximum=50):
 # consisting of those points in 'coords' which make up the convex hull,
 # if not None, the elements of this list will be used to draw the outer
 # boundary (the convex hull surrounding the data points).
-def scatter_plot(coords, convex_hulls=None):
+def scatter_plot(coords, convex_hulls=None, all_points=[], minimum=0, maximum=50, title="convex hull"):
+    fig = plt.figure(title)
+    ax = fig.add_subplot(111)
+    ax.set_xlim(xmin=minimum, xmax=maximum)
+    ax.set_ylim(ymin=minimum, ymax=maximum)
+
+    if len(all_points) > 0:
+        xall, yall = zip(*all_points)  # unzip into x and y coord lists
+        plt.scatter(xall, yall, c='gray')  # plot the data points
     xs, ys = zip(*coords)  # unzip into x and y coord lists
     plt.scatter(xs, ys)  # plot the data points
 
@@ -100,7 +110,7 @@ def is_convex(points):
     i = 0
     while determinant(points[i % len(points)], points[(i + 1) % len(points)],
                       points[(i + 2) % len(points)]) <= 0 and i < len(
-            points):
+        points):
         i = i + 1
     return i == len(points)
 
