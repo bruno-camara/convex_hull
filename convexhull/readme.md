@@ -25,6 +25,9 @@ Nous aurons besoin des libraires suivantes :
 ## Algorithme exhaustif
 ![Brute force](figs/ps3.gif)
 
+## Algorithme de Shamos
+![Divide and conquer](figs/ps4.gif)
+
 ## Algorithme de Graham
 ![Graham's scan](figs/ps2.gif)
 
