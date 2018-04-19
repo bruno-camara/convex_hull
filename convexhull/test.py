@@ -1,9 +1,6 @@
 from random import seed
 
-from graham import graham
-from jarvis import jarvis
 from exhaustive import exhaustive
-from shamos import shamos
 from utils import create_points, scatter_plot, is_convex
 
 
