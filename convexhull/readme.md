@@ -34,5 +34,8 @@ Nous aurons besoin des libraires suivantes :
 ## Algorithme de Jarvis
 ![Jarvis march](figs/ps1.gif)
 
+## Algorithme d'Eddy-Floyd
+![Eddy-Floyd](figs/ps5.gif)
+
 
 
