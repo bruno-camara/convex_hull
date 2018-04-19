@@ -133,7 +133,7 @@ def is_convex(points):
         i = i + 1
         same_sign = (new_turn * turn) >= 0
         turn = new_turn
-    return i == len(points) and (total % 360) <= (math.degrees(2 * math.pi) % 360)
+    return i == len(points) and total <= 360
 
 
 # Sorts in order of increasing polar angle from 'anchor' point.

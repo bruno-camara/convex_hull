@@ -11,7 +11,7 @@ from utils import is_convex, scatter_plot, point_in_polygon
 
 
 def exhaustive(points, show_progress=False, show=True, save=False):
-    i = 3
+    i = 5
     while i <= len(points):
         for subset in permutations(points, i):
             if is_convex(subset):
