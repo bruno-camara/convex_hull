@@ -20,5 +20,16 @@ Nous aurons besoin des libraires suivantes :
 4. Implémenter l'algorithme de Shamos dans un nouveau fichier, puis comparer aux précédents
 5. Implémenter l'algorithme d'Eddy-Floyd dans un nouveau fichier, puis comparer aux précédents
 
+# Exemples
+
+## Algorithme exhaustif
+![Brute force](figs/ps3.gif)
+
+## Algorithme de Graham
+![Graham's scan](figs/ps2.gif)
+
+## Algorithme de Jarvis
 ![Jarvis march](figs/ps1.gif)
+
+
 
