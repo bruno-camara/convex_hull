@@ -10,12 +10,12 @@ from itertools import permutations
 from utils import is_convex, scatter_plot, point_in_polygon
 
 
-def exhaustive(points, show_progress=False, show=True, save=False):
-    i = 5
+def exhaustive(points, show=True, save=False):
+    i = 3
     while i <= len(points):
         for subset in permutations(points, i):
             if is_convex(subset):
-                if show_progress:
+                if show or save:
                     scatter_plot(points, [subset], title="exhaustive search", show=show, save=save)
                 one_out = False
                 j = 0
