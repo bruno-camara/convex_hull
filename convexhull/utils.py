@@ -37,7 +37,7 @@ def scatter_plot(coords, convex_hulls=None, all_points=[], minimum=0, maximum=50
 
     if len(all_points) > 0:
         xall, yall = zip(*all_points)  # unzip into x and y coord lists
-        plt.scatter(xall, yall, c='gray')  # plot the data points
+        plt.scatter(xall, yall, c='lightgray')  # plot the data points
     xs, ys = zip(*coords)  # unzip into x and y coord lists
     plt.scatter(xs, ys)  # plot the data points
 
