@@ -9,12 +9,12 @@ from utils import create_points, scatter_plot
 
 def main():
     seed(0)
-    pts = create_points(100)
-    scatter_plot(pts, [[]], title="convex hull : initial set", show=False, save=True)
+    pts = create_points(6)
+    scatter_plot(pts, [[]], title="convex hull : initial set", show=True, save=False)
     print("Points:", pts)
-    hull = exhaustive(pts, True)
+    hull = exhaustive(pts, True, show=True, save=False)
     print("Hull:", hull)
-    scatter_plot(pts, [hull], title="convex hull : final result", show=False, save=True)
+    scatter_plot(pts, [hull], title="convex hull : final result", show=True, save=False)
 
 
 if __name__ == "__main__":
