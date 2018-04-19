@@ -1,5 +1,6 @@
 import sys
 import time
+import os
 from math import atan2  # for computing polar angle
 from random import randint, sample  # for sorting and creating data pts
 
@@ -25,8 +26,10 @@ def create_points(ct, minimum=0, maximum=50):
 # consisting of those points in 'coords' which make up the convex hull,
 # if not None, the elements of this list will be used to draw the outer
 # boundary (the convex hull surrounding the data points).
-def scatter_plot(coords, convex_hulls=None, all_points=[], minimum=0, maximum=50, title="convex hull"):
+def scatter_plot(coords, convex_hulls=None, all_points=[], minimum=0, maximum=50, title="convex hull",
+                 show=False, save=True):
     fig = plt.figure(title)
+    plt.clf()
     ax = fig.add_subplot(111)
     ax.set_xlim(xmin=minimum, xmax=maximum)
     ax.set_ylim(ymin=minimum, ymax=maximum)
@@ -47,7 +50,14 @@ def scatter_plot(coords, convex_hulls=None, all_points=[], minimum=0, maximum=50
                 c0 = convex_hull[i - 1]
                 c1 = convex_hull[i]
                 plt.plot((c0[0], c1[0]), (c0[1], c1[1]), 'r')
-    plt.show()
+    if show:
+        plt.show()
+    if save:
+        directory = "./figs/"
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+        file = directory + "convexhull_" + repr(time.time()) + ".png"
+        fig.savefig(file, bbox_inches='tight')
 
 
 # Determines whether a (x,y) point in inside a polygon defined as a list of (x,y) points.

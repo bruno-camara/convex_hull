@@ -16,7 +16,7 @@ def exhaustive(points, show_progress=False):
         for subset in permutations(points, i):
             if is_convex(subset):
                 if show_progress:
-                    scatter_plot(points, [subset], title="exhaustive search")
+                    scatter_plot(points, [subset], title="exhaustive search", show=True, save=False)
                 one_out = False
                 j = 0
                 while not one_out and j < len(points):
