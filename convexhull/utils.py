@@ -61,7 +61,7 @@ def scatter_plot(coords, convex_hulls=None, all_points=[], minimum=0, maximum=50
         fig.savefig(file, bbox_inches='tight')
 
 
-# Determines whether a (x,y) point in inside a polygon defined as a list of (x,y) points.
+# Determines whether a (x,y) point in inside a convex polygon defined as a list of (x,y) points.
 def point_in_polygon(point, poly):
     x = point[0]
     y = point[1]
@@ -79,7 +79,6 @@ def point_in_polygon(point, poly):
                     if p1x == p2x or x <= xints:
                         inside = not inside
         p1x, p1y = p2x, p2y
-
     return inside
 
 
@@ -95,9 +94,6 @@ def polar_angle(p0, p1):
 
 # Returns the euclidean distance from p0 to p1,
 # square root is not applied for sake of speed.
-# If p1 is None, defaults to replacing it with the
-# global variable 'anchor', normally set in the
-# 'graham_scan' function.
 def distance(p0, p1):
     y_span = p0[1] - p1[1]
     x_span = p0[0] - p1[0]
@@ -116,29 +112,31 @@ def determinant(p1, p2, p3):
            - (p2[1] - p1[1]) * (p3[0] - p1[0])
 
 
-# Returns the angle formed by the three points in radians
+# Returns the angle formed by the three points in radians.
 def angle(p1, p2, p3):
     return math.acos(
-        (distance(p1, p2) + distance(p1, p3) - distance(p2, p3)) / (2 * distance(p1, p2) * distance(p1, p3)))
+        (distance(p2, p1) + distance(p2, p3) - distance(p1, p3)) / (
+                2 * math.sqrt(distance(p2, p1)) * math.sqrt(distance(p2, p3))))
 
 
 # Determines whether a set of points constitutes a convex polygon.
 def is_convex(points):
-    i = 0
-    total = 0
-    det = determinant(points[i % len(points)], points[(i + 1) % len(points)],
-                      points[(i + 2) % len(points)])
-    while det <= 0 and i < len(points):
-        turn = angle(points[(i + 1) % len(points)], points[i % len(points)], points[(i + 2) % len(points)])
-        total = (math.degrees(math.pi) - math.degrees(turn)) + total
+    if len(points) == 3:
+        return True
+    same_sign = True
+    turn = angle(points[0], points[1], points[2])
+    total = 180 - math.degrees(turn)
+    i = 1
+    while same_sign and i < len(points):
+        new_turn = angle(points[(i + 0) % len(points)], points[(i + 1) % len(points)], points[(i + 2) % len(points)])
+        total = 180 - math.degrees(new_turn) + total
         i = i + 1
-        det = determinant(points[i % len(points)], points[(i + 1) % len(points)],
-                          points[(i + 2) % len(points)])
-    return i == len(points) and total <= math.degrees(2 * math.pi)
+        same_sign = (new_turn * turn) >= 0
+        turn = new_turn
+    return i == len(points) and (total % 360) <= (math.degrees(2 * math.pi) % 360)
 
 
 # Sorts in order of increasing polar angle from 'anchor' point.
-# 'anchor' variable is assumed to be global, set from within 'graham_scan'.
 # For any values with equal polar angles, a second sort is applied to
 # ensure increasing distance from the 'anchor' point.
 def quicksort(a, anchor):

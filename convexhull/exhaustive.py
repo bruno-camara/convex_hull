@@ -7,11 +7,11 @@
 
 from itertools import permutations
 
-from utils import is_convex, scatter_plot, point_in_polygon
+from utils import is_convex, scatter_plot, point_in_polygon, quicksort
 
 
 def exhaustive(points, show_progress=False, show=True, save=False):
-    i = 3
+    i = 5
     while i <= len(points):
         for subset in permutations(points, i):
             if is_convex(subset):
@@ -24,6 +24,8 @@ def exhaustive(points, show_progress=False, show=True, save=False):
                     if point not in list(subset) and not point_in_polygon(point, list(subset)):
                         one_out = True
                     j = j + 1
+                if len(subset) >= 6:
+                    scatter_plot(points, [subset], title="exhaustive search", show=True, save=save)
                 if not one_out:
                     return subset
         i = i + 1
