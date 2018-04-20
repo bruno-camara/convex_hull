@@ -5,7 +5,6 @@ from exhaustive import exhaustive
 from utils import *
 
 
-#
 def benchmark(sizes=(10, 100, 1000, 10000, 100000), runs=100, method=exhaustive):
     """
     For each size in the 'sizes' list, compute the average time over a given number of runs to find the convex hull
@@ -18,7 +17,7 @@ def benchmark(sizes=(10, 100, 1000, 10000, 100000), runs=100, method=exhaustive)
     :param runs: the number of repetition to perform for computing average (default is 100)
     :return: nothing
     """
-    print(method)
+    print(method.__name__)
     for s in sizes:
         tot = 0.0
         for _ in range(runs):
@@ -39,7 +38,7 @@ def main():
     algorithms = [exhaustive]  # [graham, jarvis, shamos]
 
     for algorithm in algorithms:
-        benchmark(sizes=(2, 4, 6, 8, 10), runs=10, method=algorithm)
+        benchmark(sizes=range(2, 10, 2), runs=10, method=algorithm)
 
 
 if __name__ == "__main__":
