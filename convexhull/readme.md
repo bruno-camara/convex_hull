@@ -23,22 +23,22 @@ Nous aurons besoin des libraires suivantes :
 # Exemples
 
 ## Algorithme exhaustif
-![Brute force](figs/ps3.gif)
+![Brute force](figs/anim-exhaustive.gif)
 
 ## Algorithme incrémental
-![Incremental](figs/ps6.gif)
-
-## Algorithme de Shamos
-![Divide and conquer](figs/ps4.gif)
+![Incremental](figs/anim-incremental.gif)
 
 ## Algorithme de Graham
-![Graham's scan](figs/ps2.gif)
+![Graham's scan](figs/anim-graham.gif)
+
+## Algorithme de Shamos
+![Divide and conquer](figs/anim-shamos.gif)
 
 ## Algorithme de Jarvis
-![Jarvis march](figs/ps1.gif)
+![Jarvis march](figs/anim-jarvis.gif)
 
 ## Algorithme d'Eddy-Floyd
-![Eddy-Floyd](figs/ps5.gif)
+![Eddy-Floyd](figs/anim-eddyfloyd.gif)
 
 
 
