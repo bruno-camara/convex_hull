@@ -1,5 +1,4 @@
 import math
-import sys
 import time
 import os
 from math import atan2  # for computing polar angle
@@ -11,6 +10,8 @@ from matplotlib import pyplot as plt  # for plotting
 # Returns a list of unique (x,y) coordinates of length 'num_points',
 # each x and y coordinate is chosen randomly from the range
 # 'min' up to 'max'.
+
+
 def create_points(ct, minimum=0, maximum=50):
     delta = maximum - minimum
     if delta * delta < ct:
@@ -98,6 +99,22 @@ def distance(p0, p1):
     y_span = p0[1] - p1[1]
     x_span = p0[0] - p1[0]
     return y_span ** 2 + x_span ** 2
+
+
+def norm(p0, p1):
+    sum(abs(a - b) for a, b in zip(p0, p1))
+
+
+# Returns the euclidean distance from p0 to p1,
+# square root is not applied for sake of speed.
+def distance_from_point_to_line(point, line):
+    x0 = point[0]
+    y0 = point[1]
+    x1 = line[0][0]
+    y1 = line[0][1]
+    x2 = line[1][0]
+    y2 = line[1][1]
+    return abs((y2 - y1) * x0 - (x2 - x1) * y0 + x2 * y1 - y2 * x1) / (distance(line[0], line[1]) ** 2)
 
 
 # Returns the determinant of the 3x3 matrix...
