@@ -258,6 +258,5 @@ def polar_quicksort(points, anchor):
             equal.append(pt)
         else:
             larger.append(pt)
-    return polar_quicksort(smaller, anchor) + sorted(equal, key=lambda x: distance(x,
-                                                                                   anchor)) + polar_quicksort(
+    return polar_quicksort(smaller, anchor) + sorted(equal, key=lambda x: distance(x, anchor)) + polar_quicksort(
         larger, anchor)
