@@ -52,6 +52,11 @@ def scatter_plot(coords, convex_hulls=None, all_points=[], minimum=0, maximum=50
                 c0 = convex_hull[i - 1]
                 c1 = convex_hull[i]
                 plt.plot((c0[0], c1[0]), (c0[1], c1[1]), 'r')
+                plt.scatter((c0[0], c1[0]), (c0[1], c1[1]), c='r')
+            if len(convex_hull) > 2:
+                xs, ys = zip(*convex_hull)  # unzip into x and y coord lists
+                plt.fill(xs, ys,'r',alpha=0.2)
+
     if show:
         plt.show()
     if save:
