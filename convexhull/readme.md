@@ -25,6 +25,9 @@ Nous aurons besoin des libraires suivantes :
 ## Algorithme exhaustif
 ![Brute force](figs/ps3.gif)
 
+## Algorithme incrémental
+![Incremental](figs/ps6.gif)
+
 ## Algorithme de Shamos
 ![Divide and conquer](figs/ps4.gif)
 
