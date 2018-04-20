@@ -234,9 +234,6 @@ def is_convex(points):
     return i == len(points) and total <= 360
 
 
-# Sorts in order of increasing polar angle from 'anchor' point.
-# For any values with equal polar angles, a second sort is applied to
-# ensure increasing distance from the 'anchor' point.
 def polar_quicksort(points, anchor):
     """
     Sorts the points in order of increasing polar angle from 'anchor' point.
