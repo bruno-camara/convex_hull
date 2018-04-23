@@ -7,7 +7,7 @@ def main():
     """
     A sample main program to test our algorithms.
 
-    :return: None
+    @return: None
     """
     # initialize the random generator seed to always use the same set of points
     seed(0)

@@ -28,7 +28,7 @@ def create_points(num_points, minimum=0, maximum=50):
     return points
 
 
-def scatter_plot(points, convex_hulls=None, all_points=[], minimum=0,
+def scatter_plot(points, convex_hulls=None, all_points=[], rays=None, minimum=0,
                  maximum=50, title="convex hull",
                  show=False, save=False, rep='./figs/', prefix='convexhull_'):
     """
@@ -40,6 +40,7 @@ def scatter_plot(points, convex_hulls=None, all_points=[], minimum=0,
 
     :param points: list of points to draw (in blue)
     :param convex_hulls: list of convex hulls to draws (in red)
+    :param rays: list of rays (point pairs) to display
     :param all_points: list of other points to draw (in gray)
     :param minimum: minimum value for xs and ys
     :param maximum: maximum value for xs and ys
@@ -77,6 +78,16 @@ def scatter_plot(points, convex_hulls=None, all_points=[], minimum=0,
             if len(convex_hull) > 2:
                 xs, ys = zip(*convex_hull)  # unzip into x and y coord lists
                 plt.fill(xs, ys, 'r', alpha=0.2)
+
+    if rays is not None:
+        for ray in rays:
+            for i in range(1, len(ray) + 1):
+                if i == len(ray):
+                    i = 0  # wrap
+                c0 = ray[i - 1]
+                c1 = ray[i]
+                plt.plot((c0[0], c1[0]), (c0[1], c1[1]), 'darkgray', linestyle=':')
+                plt.scatter((c0[0], c1[0]), (c0[1], c1[1]), c='darkgray')
 
     if show:
         plt.show()
