@@ -25,19 +25,19 @@ Nous aurons besoin des libraires suivantes :
 ## Algorithme exhaustif
 ![Brute force](figs/anim-exhaustive.gif)
 
-## Algorithme incrémental
+## Algorithme incrémental [[Kallay, 1986]](refs/kallay-1986.pdf)
 ![Incremental](figs/anim-incremental.gif)
 
-## Algorithme de Graham
+## Algorithme de Graham [[Graham, 1972]](refs/graham-1972.pdf)
 ![Graham's scan](figs/anim-graham.gif)
 
-## Algorithme de Shamos
+## Algorithme de Shamos [[Shamos, 1978]](refs/shamos-1978.pdf)
 ![Divide and conquer](figs/anim-shamos.gif)
 
-## Algorithme de Jarvis
+## Algorithme de Jarvis [[Jarvis, 1972]](refs/jarvis-1972.pdf)
 ![Jarvis march](figs/anim-jarvis.gif)
 
-## Algorithme d'Eddy-Floyd
+## Algorithme d'Eddy-Floyd [[Eddy, 1977]](refs/eddy-1977.pdf)
 ![Eddy-Floyd](figs/anim-eddyfloyd.gif)
 
 
