@@ -183,13 +183,6 @@ def distance_from_point_to_line(point, line):
             distance(line[0], line[1]) ** 2)
 
 
-# Returns the determinant of the 3x3 matrix...
-#  [p1(x) p1(y) 1]
-#  [p2(x) p2(y) 1]
-#  [p3(x) p3(y) 1]
-# If >0 then counter-clockwise
-# If <0 then clockwise
-# If =0 then collinear
 def determinant(point1, point2, point3):
     """
     Compute the determinant of three points, to determine the turn direction, as a 3x3 matrix:
@@ -220,7 +213,6 @@ def angle(point1, point2, point3):
                 2 * math.sqrt(distance(point2, point1)) * math.sqrt(distance(point2, point3))))
 
 
-#
 def is_convex(points):
     """
     Determines whether a set of points constitutes a convex polygon.
