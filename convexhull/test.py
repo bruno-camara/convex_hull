@@ -3,6 +3,7 @@ from random import seed
 from exhaustive import exhaustive
 from utils import create_points, scatter_plot
 
+
 def main():
     """
     A sample main program to test our algorithms.
