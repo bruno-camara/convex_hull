@@ -13,8 +13,8 @@ def create_points(num_points, minimum=0, maximum=50):
     given range.
 
     :param num_points: number of points to create
-    :param minimum: the maximum value fox xs and ys
-    :param maximum: the minimum value fox xs and ys
+    :param minimum: the maximum value for xs and ys
+    :param maximum: the minimum value for xs and ys
     :return: a list of unique (x,y) coordinates of length 'num_points'
     :raise: a ValueError exception if the number of points is too large for the given boundaries
     """
