@@ -10,7 +10,7 @@ from matplotlib import pyplot as plt  # for plotting
 def create_points(num_points, minimum=0, maximum=50):
     """
     Generates a list of fixed length of unique [x,y] coodinates as lists, where each [x,y] is chosen randomly from a
-    given ange.
+    given range.
 
     :param num_points: number of points to create
     :param minimum: the maximum value fox xs and ys
