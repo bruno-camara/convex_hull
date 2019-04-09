@@ -55,8 +55,8 @@ def scatter_plot(points, convex_hulls=None, all_points=[], rays=None, minimum=0,
     fig = plt.figure(title)
     plt.clf()
     ax = fig.add_subplot(111)
-    ax.set_xlim(xmin=minimum, xmax=maximum)
-    ax.set_ylim(ymin=minimum, ymax=maximum)
+    ax.set_xlim(left=minimum, right=maximum)
+    ax.set_ylim(bottom=minimum, top=maximum)
 
     if len(all_points) > 0:
         xall, yall = zip(*all_points)  # unzip into x and y coord lists
