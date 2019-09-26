@@ -2,8 +2,12 @@ from random import seed
 from time import time
 
 from exhaustive import exhaustive
+from graham import graham
+from jarvis import jarvis
+from shamos import shamos
 from utils import *
 
+import matplotlib.pyplot as pyplot
 
 def benchmark(sizes=(10, 100, 1000, 10000, 100000), runs=100, method=exhaustive):
     """
@@ -18,6 +22,7 @@ def benchmark(sizes=(10, 100, 1000, 10000, 100000), runs=100, method=exhaustive)
     :return: nothing
     """
     print(method.__name__)
+    results = []
     for s in sizes:
         tot = 0.0
         for _ in range(runs):
@@ -26,6 +31,11 @@ def benchmark(sizes=(10, 100, 1000, 10000, 100000), runs=100, method=exhaustive)
             method(points, False)
             tot += (time.time() - t0)
         print("size %d time: %0.5f" % (s, tot / float(runs)))
+        results.append(tot / float(runs))
+    dict = {}
+    dict['sizes']=sizes
+    dict['avg time']=results
+    return dict
 
 
 def main():
@@ -35,10 +45,14 @@ def main():
     :return: nothing
     """
     seed(0)
-    algorithms = [exhaustive]  # [graham, jarvis, shamos]
+    algorithms = [exhaustive] #[graham, jarvis, shamos]
+    
+    results = {}
 
     for algorithm in algorithms:
-        benchmark(sizes=range(2, 10, 2), runs=10, method=algorithm)
+        results = benchmark(runs=10, method=algorithm)
+        
+    pyplot.plot(results['sizes'],results['avg time'])
 
 
 if __name__ == "__main__":
