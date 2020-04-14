@@ -11,6 +11,7 @@ Ces fichiers sont conçus comme une base pour les TP de la toolbox PRPD.
 Nous aurons besoin des libraires suivantes :
 + matplolib
 + itertools
++ tqdm
 
 # Exercices
 
