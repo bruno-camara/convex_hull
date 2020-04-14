@@ -1,15 +1,19 @@
-from random import seed
 from time import time
+from random import seed
+
+import tqdm as tqdm
 
 from exhaustive import exhaustive
-from graham import graham
-from jarvis import jarvis
-from shamos import shamos
+# TODO from graham import graham
+# TODO from jarvis import jarvis
+# TODO from shamos import shamos
+# TODO from eddyfloyd import eddyfloyd
 from utils import *
 
-import matplotlib.pyplot as pyplot
+import matplotlib.pyplot as plt
 
-def benchmark(sizes=(10, 100, 1000, 10000, 100000), runs=100, method=exhaustive):
+
+def benchmark(sizes=(10, 100, 1000, 10000), runs=100, method=exhaustive):
     """
     For each size in the 'sizes' list, compute the average time over a given number of runs to find the convex hull
     for a dataset of that size,
@@ -21,21 +25,21 @@ def benchmark(sizes=(10, 100, 1000, 10000, 100000), runs=100, method=exhaustive)
     :param runs: the number of repetition to perform for computing average (default is 100)
     :return: nothing
     """
-    print(method.__name__)
+    # print(method.__name__)
+    seed(0)
     results = []
-    for s in sizes:
-        tot = 0.0
-        for _ in range(runs):
-            points = create_points(s, 0, max(sizes) * 10)
-            t0 = time.time()
-            method(points, False)
-            tot += (time.time() - t0)
-        print("size %d time: %0.5f" % (s, tot / float(runs)))
-        results.append(tot / float(runs))
-    dict = {}
-    dict['sizes']=sizes
-    dict['avg time']=results
-    return dict
+    with tqdm.tqdm(total=len(sizes) * runs, desc="Progress (" + method.__name__[:6] + ")") as bar:
+        for s in sizes:
+            tot = 0.0
+            for _ in range(runs):
+                points = create_points(s, 0, max(sizes) * 10)
+                t0 = time.time()
+                method(points, False)
+                tot += (time.time() - t0)
+                bar.update(1)
+            # print("size %d time: %0.5f" % (s, tot / float(runs)))
+            results.append(tot / float(runs))
+    return {'sizes': sizes, 'avg time': results}
 
 
 def main():
@@ -44,15 +48,26 @@ def main():
 
     :return: nothing
     """
-    seed(0)
-    algorithms = [exhaustive] #[graham, jarvis, shamos]
-    
+    algorithms = [exhaustive]  # TODO , graham, jarvis, shamos, eddyfloyd]
+
     results = {}
 
     for algorithm in algorithms:
-        results = benchmark(runs=10, method=algorithm)
-        
-    pyplot.plot(results['sizes'],results['avg time'])
+        if algorithm is exhaustive:
+            sizes = range(2, 9, 2)
+            runs = 10
+        else:
+            sizes = (*range(10, 11, 1), *range(1000, 10001, 1000))
+            runs = 100
+        results[algorithm] = benchmark(sizes=sizes, runs=runs, method=algorithm)
+        plt.plot(results[algorithm]['sizes'], results[algorithm]['avg time'], label=str(algorithm.__name__))
+
+    plt.legend()
+    plt.title("Convex hull algorithms execution time (s)")
+    plt.xlabel("Number of points")
+    plt.ylabel("Time (s)")
+    plt.savefig("convex_hull.png")
+    plt.close()
 
 
 if __name__ == "__main__":
