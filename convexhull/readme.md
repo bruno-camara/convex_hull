@@ -20,6 +20,8 @@ Nous aurons besoin des libraires suivantes :
 3. Implémenter l'algorithme de Jarvis dans un nouveau fichier, puis comparer aux précédents
 4. Implémenter l'algorithme de Shamos dans un nouveau fichier, puis comparer aux précédents
 5. Implémenter l'algorithme d'Eddy-Floyd dans un nouveau fichier, puis comparer aux précédents
+6. Implémenter l'algorithme de Kallay dans un nouveau fichier, puis comparer aux précédents
+
 
 # Exemples
 
